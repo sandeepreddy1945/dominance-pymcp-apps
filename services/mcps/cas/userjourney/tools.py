@@ -34,7 +34,7 @@ class UserJourneyTools:
                     url=f"{os.getenv('CAS_API_URL')}/journey/purchase",
                     model=dict,
                     headers={"Authorization": f"Bearer {access_token.token}"},
-                    payload={"product_id": product_id},
+                    params={"product_id": product_id},
                     validate_model=False,
                 )
             else:
@@ -42,6 +42,7 @@ class UserJourneyTools:
                     url=f"{os.getenv('CAS_API_URL')}/journey/purchase",
                     model=dict,
                     headers={"Authorization": f"Bearer {access_token.token}"},
+                    params={"cart_checkout": True},
                     validate_model=False,
                 )
             ctx.report_progress(

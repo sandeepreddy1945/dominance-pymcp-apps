@@ -270,11 +270,11 @@ This project is licensed under the MIT License.
 
 ## 👥 Team
 
-Development Team: Nagarro
+Development Team: Sandeep Reddy
 
 ---
 
-**Built with ❤️ by Nagarro**
+**Built with ❤️ by sandeep reddy**
 ```
 
 ### Integration Tests
@@ -369,7 +369,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-- Development Team: Nagarro
+- Development Team: Sandeep Reddy
 
 ## 🆘 Support
 
@@ -388,4 +388,4 @@ For issues and questions:
 
 ---
 
-**Built with ❤️ by Nagarro**
+**Built with ❤️ by sandeep reddy**
