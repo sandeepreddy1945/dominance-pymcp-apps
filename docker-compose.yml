@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:latest # Or a specific version like redis:7.4-alpine
+    ports:
+      - "6379:6379" # Maps host port 6379 to container port 6379
+    volumes:
+      - redis_data:/data # Persists Redis data to a named volume
+    restart: always # Ensures Redis restarts automatically
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KC_DB: dev-file # Explicitly sets H2 file as the database
+      KC_DB_URL_H2: jdbc:h2:./data/keycloakdb # Path to store the H2 database file
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HTTP_PORT: 1999
+    ports:
+      - "1999:1999" # Maps host port 1999 to container port 1999
+    restart: always # Ensures Keycloak restarts automatically
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+
+volumes:
+  redis_data: # Defines the named volume for data persistence
+  keycloak_data: # Defines the named volume for Keycloak data persistence

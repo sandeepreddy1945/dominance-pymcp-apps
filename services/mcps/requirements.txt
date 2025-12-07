@@ -1,0 +1,6 @@
+fastmcp
+debugpy
+redis
+# Dependencies for auto code generation
+# Jinja2
+# click
