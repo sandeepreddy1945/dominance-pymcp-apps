@@ -8,7 +8,7 @@ from .products.server import mcp as products_mcp
 from .wishlist.server import mcp as wishlist_mcp
 from .cart.server import mcp as cart_mcp
 from .userjourney.server import mcp as user_journey_mcp
-from .order.server import mcp as order_mcp
+from .orders.server import mcp as order_mcp
 
 load_dotenv()
 
