@@ -1,11 +1,12 @@
 from fastmcp import FastMCP, Context, tools
 from pydantic import Field
 from ..schemas.order import OrderResponse
-from ..utils.httpx_utils import post_and_parse, fetch_and_parse, put_and_parse
+from ..utils.httpx_utils import post_and_parse, fetch_list
 from typing import Annotated, Optional
 import os
 from fastmcp.server.dependencies import get_access_token, AccessToken
 from dataclasses import dataclass
+from typing import List
 
 
 class OrderTools:
@@ -20,7 +21,7 @@ class OrderTools:
             tags={"orders"},
             meta={"auth_level": "user", "version": "1.0.0", "author": "sandeep reddy"},
         )
-        async def orders_checkout(ctx: Context):
+        async def orders_checkout(ctx: Context) -> OrderResponse:
             """
             Checkout the order
             """
@@ -41,15 +42,15 @@ class OrderTools:
             tags={"orders"},
             meta={"auth_level": "user", "version": "1.0.0", "author": "sandeep reddy"},
         )
-        async def orders_history(ctx: Context):
+        async def orders_history(ctx: Context) -> List[OrderResponse]:
             """
             Get the order history
             """
             access_token: AccessToken = get_access_token()
             ctx.report_progress(progress=0.5, message="Fetching order history", total=1)
-            orders = await fetch_and_parse(
+            orders = await fetch_list(
                 url=f"{os.getenv('CAS_API_URL')}/orders/history",
-                model=list[OrderResponse],
+                model=OrderResponse,
                 headers={"Authorization": f"Bearer {access_token.token}"},
             )
             ctx.report_progress(progress=1, message="Order history fetched", total=1)

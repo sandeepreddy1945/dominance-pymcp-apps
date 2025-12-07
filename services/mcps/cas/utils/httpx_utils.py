@@ -1,9 +1,25 @@
 import httpx
-from typing import Optional, Type, TypeVar
+from typing import Optional, Type, TypeVar, List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, TypeAdapter
 
 T = TypeVar("T", bound=BaseModel)
+
+
+async def fetch_list(
+    url: str,
+    model: Type[T],
+    headers: Optional[dict[str, str]] = {},
+    params: Optional[dict[str, str]] = {},
+    validate_model: bool = True,
+) -> List[T]:
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url=url, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+        return (
+            TypeAdapter(List[model]).validate_python(data) if validate_model else data
+        )
 
 
 async def fetch_and_parse(
