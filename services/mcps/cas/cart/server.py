@@ -1,6 +1,6 @@
 from fastmcp import FastMCP
 from .tools import CartTools
-from ..utils.auth_provider import jwt_verifier
+from ..utils.auth_provider import remoteAuthProvider
 from dotenv import load_dotenv
 import os
 
@@ -8,7 +8,7 @@ load_dotenv()
 
 mcp = FastMCP(
     "cas_cart_mcp",
-    auth=jwt_verifier,
+    auth=remoteAuthProvider,
     debug=True,
 )
 

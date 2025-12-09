@@ -1,7 +1,7 @@
 from fastmcp import FastMCP
 from dotenv import load_dotenv
 import os
-from .utils.auth_provider import jwt_verifier
+from .utils.auth_provider import remoteAuthProvider
 from .auth.server import mcp as auth_mcp
 from .user.server import mcp as user_mcp
 from .products.server import mcp as products_mcp
@@ -14,7 +14,7 @@ load_dotenv()
 
 mcp = FastMCP(
     "Conversational Assistant Service MCP",
-    auth=jwt_verifier,
+    auth=remoteAuthProvider,
     debug=True,
 )
 
