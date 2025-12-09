@@ -1,0 +1,15 @@
+{
+    "name": "cas",
+    "description": "MCP server with OAuth2",
+    "version": "0.1.0",
+    "auth": {
+        "type": "oauth2",
+        "client_id": "dominance-client",
+        "auth_uri": "http://localhost:1999/realms/sandeep/protocol/openid-connect/auth",
+        "token_uri": "http://localhost:1999/realms/sandeep/protocol/openid-connect/token",
+        "scopes": [
+            "openid",
+            "email"
+        ]
+    }
+}

@@ -6,6 +6,6 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "debugpy>=1.8.17",
-    "fastmcp>=2.13.0.2",
+    "fastmcp>=2.13.3",
     "redis>=7.0.1",
 ]
